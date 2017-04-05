@@ -8,7 +8,11 @@
 // +----------------------------------------------------------------------
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
+use think\Route;
 
+Route::resource('maps', 'smst/map');
+Route::resource('floors', 'smst/floor');
+Route::resource('roads', 'smst/road');
 return [
     '__pattern__' => [
         'name' => '\w+',
