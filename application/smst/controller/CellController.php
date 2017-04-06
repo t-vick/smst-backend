@@ -4,9 +4,8 @@ namespace app\smst\controller;
 
 use think\Controller;
 use think\Request;
-use app\common\model\Map;
 
-class MapController extends Controller
+class CellController extends Controller
 {
     /**
      * 显示资源列表
@@ -16,11 +15,6 @@ class MapController extends Controller
     public function index()
     {
         //
-        $list = Map::all();
-//        $list = Map::with('floors.roads')->select(1);//select传可以传一个id
-//        $list = Map::with('floors.roads')->select([1]);//select传空数组会返回一个空数组
-//        $list = Map::all([],'floors.roads');//查询所有的map预载入floors,和roads
-        return $list;
     }
 
     /**
@@ -52,9 +46,7 @@ class MapController extends Controller
      */
     public function read($id)
     {
-        $list = Map::with('floors.roads')->select($id);//select传可以传一个id
-        $map = Map::get($id, ['floors.roads', 'floors.cells']);
-        return $map;
+        //
     }
 
     /**

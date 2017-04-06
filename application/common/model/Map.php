@@ -7,4 +7,7 @@ use think\Model;
 class Map extends Model
 {
     //
+    public function floors() {
+        return $this->hasMany('Floor');
+    }
 }
