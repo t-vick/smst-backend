@@ -52,11 +52,17 @@ class MapController extends Controller
      */
     public function read($id)
     {
-        $list = Map::with('floors.roads')->select($id);//select传可以传一个id
-        $map = Map::get($id, ['floors.roads', 'floors.cells']);
+//        $list = Map::with('floors.roads','floors.cells')->select($id);//select传可以传一个id
+
+//        $list = Map::with(['floors'=>function($query) {
+//            $query->with('roads')->with('cells');
+//        }])->select([$id]);
+//        return $list;
+        $map = Map::get($id,['floors' => function($query) {
+            $query->with('roads')->with('cells');
+        }]);
         return $map;
     }
-
     /**
      * 显示编辑资源表单页.
      *
