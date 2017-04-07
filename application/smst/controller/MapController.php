@@ -24,16 +24,6 @@ class MapController extends Controller
     }
 
     /**
-     * 显示创建资源表单页.
-     *
-     * @return \think\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * 保存新建的资源
      *
      * @param  \think\Request  $request
@@ -42,6 +32,9 @@ class MapController extends Controller
     public function save(Request $request)
     {
         //
+        $data = $request->param();
+        $result = Map::create($data);
+        return $result;
     }
 
     /**
@@ -63,16 +56,6 @@ class MapController extends Controller
         }]);
         return $map;
     }
-    /**
-     * 显示编辑资源表单页.
-     *
-     * @param  int  $id
-     * @return \think\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * 保存更新的资源
@@ -83,7 +66,9 @@ class MapController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->param();
+        $result = Map::update($data,['id' => $id]);
+        return $result;
     }
 
     /**
@@ -94,6 +79,7 @@ class MapController extends Controller
      */
     public function delete($id)
     {
-        //
+        $result = Map::destroy($id);
+        return $result;
     }
 }
